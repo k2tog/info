@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker build --file Dockerfile --tag $IMAGE_NAME --build-arg COMMIT_SHA=$(git rev-parse --short HEAD) --build-arg VERSION=1.0.0 --build-arg NAME=my-application .
