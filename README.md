@@ -21,7 +21,7 @@ To install Info API - use docker run on the host / cluster of your choice, using
 
 Example:
 
-$ docker run -d -p 80:5000 --env SERVICE_PORT=3000 --env LOG_LEVEL=WARN --name info k2tog/info
+$ docker run -d -p 80:5000 --env SERVICE_PORT=8080 --env LOG_LEVEL=INFO --name info k2tog/info
 
 
 
@@ -44,7 +44,7 @@ _https://cloud.google.com/cloud-build/docs/configuring-builds/substitute-variabl
 ## The code
 The code is hosted at https://github.com/k2tog/info. Clone the latest development version anonymously with: 
 
-$ git clone git://github.com/k2tog/first.git
+$ git clone git://github.com/k2tog/info.git
 
 
 

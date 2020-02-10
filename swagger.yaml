@@ -26,7 +26,7 @@ paths:
         enum:
         - 'DEBUG'
         - 'INFO'
-        - 'WARN'
+        - 'WARNING'
         - 'ERROR'
         - 'CRITICAL'
       - name: service_port
@@ -46,7 +46,7 @@ paths:
               $ref: '#/definitions/InfoItem'
         '404':
           description: Info not found
-        '405':
+        '422':
           description: Invalid input
 definitions:
   InfoItem:
