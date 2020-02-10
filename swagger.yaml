@@ -1,0 +1,85 @@
+swagger: '2.0'
+info:
+  description: A simple API returns Info
+  version: 1.0.0
+  title: Info API
+  contact:
+    email: k2togk@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+paths:
+  /info :
+    get:
+      summary: returns Info
+      operationId: info
+      description: returns Info from the system
+      produces:
+      - application/json
+      parameters:
+      - name: log_level
+        in: path
+        description: level of logging 
+        required: true
+        type: string
+        enum:
+        - 'DEBUG'
+        - 'INFO'
+        - 'WARN'
+        - 'ERROR'
+        - 'CRITICAL'
+      - name: service_port
+        in: path
+        description: port service runs on
+        required: true
+        type: integer
+        minimum: 1
+        maximum: 65535
+        format: int64
+      responses:
+        '200':
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/InfoItem'
+        '404':
+          description: Info not found
+        '405':
+          description: Invalid input
+definitions:
+  InfoItem:
+    type: object
+    required:
+    - service_name
+    - version
+    - git_commit_sha
+    - environment
+    properties:
+      service_name:
+        type: string
+        example: 'Info'
+      version:
+        type: string
+        example: '1.0.1'
+      git_commit_sha:
+        type: string
+        example: '2722bbe'
+      environment:
+        $ref: '#/definitions/Environment'
+  Environment:
+    type: object
+    required:
+    - service_port
+    - log_level
+    properties:
+      service_port:
+        type: string
+        example: 8080
+      log_level:
+        type: string
+host: virtserver.swaggerhub.com
+basePath: /k355/Info/1.0.0
+schemes:
+ - http
